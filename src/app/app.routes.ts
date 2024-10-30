@@ -5,5 +5,5 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 export const routes: Routes = [
     {path: 'dashboard', component:DashboardComponent, pathMatch:'full'},
     {path:'login', component:LoginComponent, pathMatch:'full'},
-    { path: '', redirectTo: 'login', pathMatch: 'full' }
+    // { path: '', redirectTo: 'login', pathMatch: 'full' }
 ];
