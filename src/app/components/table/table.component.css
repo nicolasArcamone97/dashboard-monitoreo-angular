@@ -22,3 +22,22 @@
     font-weight: 400;
     color: #B0CAD1;
 }
+
+
+
+
+/*  */
+
+.dropdown-toggle::after {
+    display: none; 
+  }
+  
+.btn-light {
+    border: none; 
+    background-color: transparent; 
+}
+  
+
+.dropdown-item:hover {
+    background-color: #33a3aa;
+}

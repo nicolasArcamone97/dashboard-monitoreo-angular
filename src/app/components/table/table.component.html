@@ -1,7 +1,7 @@
 <div class="container-fluid container-table my-4">
     <div class="create-plant">
         <h5>Plantas</h5>
-        <button class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> + Nueva Planta</button>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"> + Nueva Planta</button>
         <app-modal></app-modal>
     </div>
     <table class="table table-borderless">
@@ -22,7 +22,23 @@
                 <td class="d-none d-md-table-cell">mdo</td>
                 <td class="d-none d-md-table-cell">Mark</td>
                 <td class="d-none d-md-table-cell">Otto</td>
-                <td class="d-none d-md-table-cell">mdo</td>
+                <td class="d-none d-md-table-cell">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="border: none;">
+                            <i class="bi bi-three-dots-vertical"></i> 
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                            <li>
+                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal2"> <i class="bi bi-dialpad"></i> Editar</a>
+                                <app-modal-edit></app-modal-edit>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" disabled> Eliminar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Jacob</td>
@@ -30,7 +46,24 @@
                 <td class="d-none d-md-table-cell">fat</td>
                 <td class="d-none d-md-table-cell">Mark</td>
                 <td class="d-none d-md-table-cell">Otto</td>
-                <td class="d-none d-md-table-cell">mdo</td>
+                <td class="d-none d-md-table-cell">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="border: none;">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bi bi-dialpad"></i> Editar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" disabled> Eliminar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
             </tr>
             <tr>
                 <td>Larry</td>
@@ -38,8 +71,25 @@
                 <td class="d-none d-md-table-cell">twitter</td>
                 <td class="d-none d-md-table-cell">Mark</td>
                 <td class="d-none d-md-table-cell">Otto</td>
-                <td class="d-none d-md-table-cell">mdo</td>
-            </tr>
+                <td class="d-none d-md-table-cell">
+                    <div class="dropdown">
+                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" style="border: none;">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <i class="bi bi-dialpad"></i> Editar
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#" disabled> Eliminar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+            </tr>    
         </tbody>
     </table>
 </div>
