@@ -1,0 +1,24 @@
+.container-table {
+    display: flex;
+    flex-direction: column;
+    background-color: #FFFF;
+    overflow: hidden;
+    border-radius: 20px;
+    height: max-content;
+}
+.create-plant {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    height: 80px;
+    gap: 20px;
+}
+
+.create-plant .btn {
+    border: 1px solid #B0CAD1
+}
+
+.table th {
+    font-weight: 400;
+    color: #B0CAD1;
+}

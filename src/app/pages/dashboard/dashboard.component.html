@@ -1,13 +1,23 @@
 <div class="container-fluid">
-    <div class="row row-principal">
-        <div class="col col-sidebar">
-            <app-sidebar/>
+    <div class="row min-vh-100">
+        <!-- Sidebar -->
+        <div class="col-md-3 col-lg-2 col-side  py-4 d-none d-md-block">
+            <app-sidebar></app-sidebar>
         </div>
 
-        <div class="col col-home">
-            <h1>Hola</h1>
-        </div>
+        <!-- Main Content -->
+        <div class="col">
+            <!-- Navbar -->
+            <app-navbar></app-navbar>
 
+            <!-- Cards Row 1 -->
+            <app-card></app-card>
+
+            <!-- Table -->
+            <app-table></app-table>
+
+            <!-- Cards Row 2 -->
+            <app-status-card></app-status-card>
+        </div>
     </div>
 </div>
-
