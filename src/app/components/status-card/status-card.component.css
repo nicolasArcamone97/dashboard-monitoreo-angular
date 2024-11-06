@@ -79,6 +79,7 @@
 }
 
 .card-inf .card-title {
+    font-size: clamp(13px, 13px, 20px);
     color: #9e9ea1;
 } 
 
