@@ -2,7 +2,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Crear planta</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -13,8 +13,8 @@
                      name="nombre" [(ngModel)]="nombreIngresado">
             </div>
             <div class="mb-3">
-              <select class="form-select" aria-label="Default select example" name="pais" [(ngModel)]="paisSelected" (change)="selectPais(paisSelected)">
-                <option *ngFor="let pais of listPaises" [value]="pais.cca3">{{ pais.name.common }} </option>  
+              <select class="form-select" aria-label="Default select example" name="pais" [(ngModel)]="paisSelected" (change)="obtenerPais(paisSelected)">
+                <option *ngFor="let pais of listPaises" [value]="pais.cca3">{{ pais.name.common}}</option>  
               </select>
               
             </div>            

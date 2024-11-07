@@ -1,8 +1,8 @@
 <div class="container container-table my-4">
     <div class="create-plant">
         <h5>Plantas</h5>
-        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1"> + Nueva Planta</button>
-        <app-modal></app-modal>
+        <button class="btn" data-bs-toggle="modal" data-bs-target="#exampleModal1">+ Nueva Planta</button>
+        <app-modal (plantaEnviada)="agregarPlanta($event)"></app-modal>
     </div>
     <table class="table table-borderless">
         <thead>
@@ -16,85 +16,39 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td class="d-none d-md-table-cell">mdo</td>
-                <td class="d-none d-md-table-cell">Mark</td>
-                <td class="d-none d-md-table-cell">Otto</td>
+            <tr *ngFor="let planta of listPlantas">
+                
+                <td>
+                    <img [src]="planta.bandera" width="30" height="20" />
+                    {{ planta.pais }}
+                </td>
+                <td>{{ planta.nombre }}</td>
+                <td class="d-none d-md-table-cell">{{ planta.cantLecturas }}</td>
+                <td class="d-none d-md-table-cell">{{ planta.cantAlertasMedias }}</td>
+                <td class="d-none d-md-table-cell">{{ planta.cantAlertasAltas }}</td>
                 <td class="d-none d-md-table-cell">
                     <div class="dropdown">
                         <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" style="border: none;">
-                            <i class="bi bi-three-dots-vertical"></i> 
+                            <i class="bi bi-three-dots-vertical"></i>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
                             <li>
-                                <a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#exampleModal2"> <i class="bi bi-dialpad"></i> Editar</a>
-                                
+                                <a class="dropdown-item" (click)="editarPlanta(planta)" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                                    <i class="bi bi-dialpad"></i> Editar
+                                </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="#" disabled> Eliminar
+                                <a class="dropdown-item text-muted" style="cursor: pointer;" (click)="eliminarPlanta(planta.id)">
+                                    <i class="bi bi-trash"></i> Eliminar
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </td>
             </tr>
-            <tr>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td class="d-none d-md-table-cell">fat</td>
-                <td class="d-none d-md-table-cell">Mark</td>
-                <td class="d-none d-md-table-cell">Otto</td>
-                <td class="d-none d-md-table-cell">
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false" style="border: none;">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-dialpad"></i> Editar
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#" disabled> Eliminar
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>
-            <tr>
-                <td>Larry</td>
-                <td>Bird</td>
-                <td class="d-none d-md-table-cell">twitter</td>
-                <td class="d-none d-md-table-cell">Mark</td>
-                <td class="d-none d-md-table-cell">Otto</td>
-                <td class="d-none d-md-table-cell">
-                    <div class="dropdown">
-                        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton3" data-bs-toggle="dropdown" aria-expanded="false" style="border: none;">
-                            <i class="bi bi-three-dots-vertical"></i>
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                            <li>
-                                <a class="dropdown-item" href="#">
-                                    <i class="bi bi-dialpad"></i> Editar
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#" disabled> Eliminar
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </td>
-            </tr>    
         </tbody>
     </table>
 </div>
-
-
 
 
 <!-- modal edit -->
@@ -109,41 +63,39 @@
                 <form>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label class="form-label">Nombre de la planta</label>
-                            <input type="text" class="form-control" placeholder="Ingrese nuevo nombre">
+                            <label class="form-label">Nombre</label>
+                            <input type="text" class="form-control" placeholder="Ingrese" [(ngModel)]="plantaSeleccionada.nombre" name="nombre">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">País</label>
-                            <input type="text" class="form-control" placeholder="Ingrese nuevo País">
+                            <input type="text" class="form-control" placeholder="Ingrese" [(ngModel)]="plantaSeleccionada.pais" name="pais" disabled>
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Cantidad de lecturas</label>
-                            <input type="text" class="form-control" placeholder="Ingrese">
+                            <input type="text" class="form-control" placeholder="Ingrese" [(ngModel)]="plantaSeleccionada.cantLecturas" name="cantLecturas">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Cantidad de sensores</label>
-                            <input type="text" class="form-control" placeholder="Ingrese">
+                            <input type="text" class="form-control" placeholder="Ingrese" [(ngModel)]="plantaSeleccionada.cantSensores" name="cantSensores">
                         </div>
                     </div>
-
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label class="form-label">Alertas medias</label>
-                            <input type="text" class="form-control" placeholder="Ingrese">
+                            <input type="text" class="form-control" placeholder="Ingrese" [(ngModel)]="plantaSeleccionada.cantAlertasMedias" name="cantAlertasMedias">
                         </div>
                         <div class="col-md-6">
                             <label class="form-label">Alertas rojas</label>
-                            <input type="text" class="form-control" placeholder="Ingrese">
+                            <input type="text" class="form-control" placeholder="Ingrese" [(ngModel)]="plantaSeleccionada.cantAlertasAltas" name="cantAlertasAltas">
                         </div>
                     </div>
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-cancelar" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-crear">Editar</button>
+                <button type="button" class="btn btn-crear" (click)="actualizarPlanta(plantaSeleccionada)">Editar</button>
             </div>
         </div>
     </div>

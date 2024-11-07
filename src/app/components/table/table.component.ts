@@ -1,37 +1,71 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
+import { PlantaService } from '../../services/planta.service';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [RouterOutlet, ModalComponent],
+  imports: [RouterOutlet, ModalComponent,CommonModule,FormsModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
-export class TableComponent {
+export class TableComponent implements OnInit{
 
-  
+  listPlantas?: any[] = []
+
+  plantaSeleccionada?: any = {}
+
+  constructor(private plantaService:PlantaService){}
 
 
-
-  plantas = [
-    { pais: 'USA', nombre: 'Planta 1', lecturas: 'mdo', alertasMedias: 'Mark', alertasRojas: 'Otto' },
-    { pais: 'UK', nombre: 'Planta 2', lecturas: 'fat', alertasMedias: 'Mark', alertasRojas: 'Otto' },
-    { pais: 'Canada', nombre: 'Planta 3', lecturas: 'twitter', alertasMedias: 'Mark', alertasRojas: 'Otto' },
-  ];
-
-  
-  editarPlanta(planta:any) {
-   
-    console.log('Editar planta:', planta);
-  }
-
-  
-  eliminarPlanta(planta:any) {
+  ngOnInit(): void{
+    this.obtenerPlantas()
+    this.listPlantas
     
-    console.log('Eliminar planta:', planta);
   }
+  
+ 
+  
+  obtenerPlantas(){
+    this.plantaService.obtenerPlantas().subscribe( data => {
+      this.listPlantas = data
+      console.log(this.listPlantas)
+    })
+  }
+
+
+  eliminarPlanta(plantaId:number) {
+    this.plantaService.eliminarPlanta(plantaId).subscribe( (data) => {
+      this.obtenerPlantas()
+      console.log(data)
+    })
+  }
+
+
+
+  agregarPlanta(nuevaPlanta: any) {
+    this.plantaService.crearPlanta(nuevaPlanta).subscribe( () => {
+      this.obtenerPlantas()
+    })
+  }
+
+  editarPlanta(planta:any) {
+    this.plantaSeleccionada = { ...planta };
+  }
+
+  actualizarPlanta(planta:any){
+    this.plantaSeleccionada = { ...planta };
+    this.plantaService.editarPlanta(this.plantaSeleccionada.id,this.plantaSeleccionada).subscribe( (data) => {
+      this.obtenerPlantas()
+      console.log(data)
+    })
+  }
+
+
+
 }
 

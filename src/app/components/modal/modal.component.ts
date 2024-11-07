@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { PaisService } from '../../services/pais.service';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
@@ -11,43 +11,48 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })
-export class ModalComponent  {
 
-  listPaises?: any[] = [];
+export class ModalComponent {
 
-  paisSelected?: any;
-
+  listPaises: any[] = []; 
+  paisSelected?: any;       
   nombreIngresado: string = '';
+  detallePais?:any
 
-  constructor(private paisService:PaisService) {}
+  @Output() plantaEnviada = new EventEmitter<any>();
 
-  ngOnInit(){
-    this.obtenerPaises()
+  constructor(private paisService: PaisService) {}
+
+  ngOnInit() {
+    this.obtenerPaises();
+   
   }
 
-
-  obtenerPaises(){
-    this.paisService.obtenerPaises().subscribe( paises => {
+  obtenerPaises() {
+    this.paisService.obtenerPaises().subscribe(paises => {
       this.listPaises = paises;
+    });
+  }
+
+  obtenerPais(pais:any){
+    this.paisService.obtenerPais(this.paisSelected).subscribe( (pais) => {
+      this.detallePais = pais
+      console.log(this.detallePais)
     })
   }
 
 
-  onSubmit(){
-    this.paisSelected;
-    this.nombreIngresado;
+  onSubmit() {
+    const nuevaPlanta = {
+      nombre: this.nombreIngresado,
+      pais: this.detallePais[0].name.common,
+      bandera: this.detallePais[0].flags.png
+    };
 
-    console.log('Nombre enviado:', this.nombreIngresado);
-    console.log('País enviado:', this.paisSelected);
+    console.log(nuevaPlanta);
+    this.plantaEnviada.emit(nuevaPlanta);
+
   }
-
-
-  selectPais(pais:any){
-    this.paisSelected = pais
-    
-    console.log(this.paisSelected)
-  }
-
-
-
 }
+
+
