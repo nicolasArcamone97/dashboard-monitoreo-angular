@@ -4,6 +4,8 @@ import { ModalComponent } from '../modal/modal.component';
 import { PlantaService } from '../../services/planta.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import Swal from 'sweetalert2';
+
 
 
 @Component({
@@ -65,6 +67,30 @@ export class TableComponent implements OnInit{
     })
   }
 
+
+  // documentacion de SwartAlert2
+  showModal(planta:any) {
+    Swal.fire({
+      title: '¿Estás seguro?',
+      text: `¿Queres eliminar la planta ${planta.nombre} ubicada en ${planta.pais}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#33a3aa',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, eliminar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.eliminarPlanta(planta.id); 
+        Swal.fire(
+          'Eliminada',
+          'La planta ha sido eliminada correctamente.',
+          'success'
+        );
+      }
+    });
+  }
+  
 
 
 }
