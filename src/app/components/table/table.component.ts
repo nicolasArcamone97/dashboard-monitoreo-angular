@@ -35,7 +35,6 @@ export class TableComponent implements OnInit{
   obtenerPlantas(){
     this.plantaService.obtenerPlantas().subscribe( data => {
       this.listPlantas = data
-      console.log(this.listPlantas)
     })
   }
 
@@ -63,7 +62,6 @@ export class TableComponent implements OnInit{
     this.plantaSeleccionada = { ...planta };
     this.plantaService.editarPlanta(this.plantaSeleccionada.id,this.plantaSeleccionada).subscribe( (data) => {
       this.obtenerPlantas()
-      console.log(data)
     })
   }
 

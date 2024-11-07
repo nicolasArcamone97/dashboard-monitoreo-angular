@@ -13,3 +13,14 @@ app-login {
     padding: 0;
     width: 100%;
 }
+
+
+
+app-register {
+    display: flex;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
