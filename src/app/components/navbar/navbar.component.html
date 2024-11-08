@@ -4,19 +4,22 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse  " id="navbarNav">
-            <ul class="navbar-nav  ms-auto justify-content-center align-items-center">
-                <li class="nav-item">
+        <div class="collapse navbar-collapse  " id="navbarNav" >
+            <ul  class="navbar-nav  ms-auto justify-content-center align-items-center">
+                <li class="nav-item  d-none d-md-block">
                     <a class="nav-link active" aria-current="page"><i class="bi bi-globe"></i></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none  d-none d-md-block">
                     <a class="nav-link" ><i class="bi bi-gear"></i></a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item d-none  d-none d-md-block">
                     <a class="nav-link"><i class="bi bi-bell"></i></a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link">Nicolás Arcamone</a>
+                <li class="nav-item d-lg-none">
+                    <a class="nav-link" routerLink="/register" ><i class="bi bi-box-arrow-left"></i></a>
+                </li>
+                <li class="nav-item" *ngIf="user">
+                    <a class="nav-link">{{user.nombre}}</a>
                 </li>
             </ul>
         </div>

@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-modal',
@@ -29,17 +30,22 @@ export class ModalComponent {
    
   }
 
+
   obtenerPaises() {
     this.paisService.obtenerPaises().subscribe(paises => {
       this.listPaises = paises;
-    });
+    }), (err:HttpErrorResponse) => {
+      console.log("Error al obtener paises de api countries",err)
+    }
   }
 
   obtenerPais(pais:any){
     this.paisService.obtenerPais(this.paisSelected).subscribe( (pais) => {
       this.detallePais = pais
       console.log(this.detallePais)
-    })
+    }), (err:HttpErrorResponse) => {
+      console.log("Error al obtener el pais de api countries", err)
+    }
   }
 
    

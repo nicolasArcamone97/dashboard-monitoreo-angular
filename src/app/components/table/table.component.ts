@@ -5,6 +5,7 @@ import { PlantaService } from '../../services/planta.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { HttpErrorResponse } from '@angular/common/http';
 
 
 
@@ -34,16 +35,21 @@ export class TableComponent implements OnInit{
   
   obtenerPlantas(){
     this.plantaService.obtenerPlantas().subscribe( data => {
-      this.listPlantas = data
-    })
+      this.listPlantas = data;
+    }), (err: HttpErrorResponse) => {
+      console.error("Error al obtener plantas", err)
+    }
+
   }
+  
 
 
   eliminarPlanta(plantaId:number) {
     this.plantaService.eliminarPlanta(plantaId).subscribe( (data) => {
       this.obtenerPlantas()
-      console.log(data)
-    })
+    }), (err:HttpErrorResponse) => {
+      console.log("Error al eliminar la planta",err)
+    }
   }
 
 
@@ -51,7 +57,9 @@ export class TableComponent implements OnInit{
   agregarPlanta(nuevaPlanta: any) {
     this.plantaService.crearPlanta(nuevaPlanta).subscribe( () => {
       this.obtenerPlantas()
-    })
+    }), (err:HttpErrorResponse) => {
+      console.log("Error al eliminar la planta",err)
+    }
   }
 
   editarPlanta(planta:any) {
@@ -62,7 +70,9 @@ export class TableComponent implements OnInit{
     this.plantaSeleccionada = { ...planta };
     this.plantaService.editarPlanta(this.plantaSeleccionada.id,this.plantaSeleccionada).subscribe( (data) => {
       this.obtenerPlantas()
-    })
+    }), (err:HttpErrorResponse) => {
+      console.log("Error al Actualizar la planta",err)
+    }
   }
 
 
