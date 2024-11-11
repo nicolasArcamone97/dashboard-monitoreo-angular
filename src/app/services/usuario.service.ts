@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private usuariUrl = 'http://localhost:8080/usuario'
+  private usuariUrl = 'http://nahuel-raspy.duckdns.org:8888/usuario'
   private userKey = 'user';
   
   constructor(private httpCliente:HttpClient) { }
