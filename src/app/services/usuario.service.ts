@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  private usuariUrl = 'http://localhost:8080/usuarios'
+  private usuariUrl = 'http://localhost:8080/usuario'
   private userKey = 'user';
   
   constructor(private httpCliente:HttpClient) { }
@@ -40,7 +40,7 @@ export class UsuarioService {
   }
 
   crearUsuario(usuario:any):Observable<any>{
-    return this.httpCliente.post(`${this.usuariUrl}/crear`,usuario)
+    return this.httpCliente.post(this.usuariUrl,usuario)
   }
 
   login(usuario:any):Observable<any>{

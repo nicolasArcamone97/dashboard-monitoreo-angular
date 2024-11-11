@@ -9,7 +9,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [RouterOutlet,CommonModule,ReactiveFormsModule,FormsModule],
+  imports: [CommonModule,ReactiveFormsModule,FormsModule],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.css'
 })

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PlantaService {
 
-  private baseUrl = 'http://localhost:8080/plantas'
+  private baseUrl = 'http://localhost:8080/planta'
 
   constructor(private httpCliente:HttpClient) { }
 
@@ -22,7 +22,7 @@ export class PlantaService {
   }
 
   public crearPlanta(nuevaPlanta:any):Observable<any>{
-    return this.httpCliente.post(`${this.baseUrl}/crear`,nuevaPlanta)
+    return this.httpCliente.post(this.baseUrl,nuevaPlanta)
   }
 
   public editarPlanta(id:number,plantaEdit:any):Observable<any>{

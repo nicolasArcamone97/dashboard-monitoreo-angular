@@ -30,34 +30,45 @@
 
     <!-- Columna de formulario -->
     <div class="col-md-6 col-12 col-form-login d-flex justify-content-center align-items-center">
-      <form class="w-75" (ngSubmit)="onSubmit()">
+      <form class="w-75" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="col col-titulo-form text-center mb-4">
           <h1>Portal de monitoreo</h1>
           <h2>Registrarme</h2>
         </div>
-        
+
         <!-- input nombre -->
         <div class="mb-3">
-          <label for="exampleInputName" class="form-label">Nombre</label>
-          <input type="text" class="form-control" id="exampleInputName" [(ngModel)]="nombre" name="nombre" required>
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" formControlName="nombre">
+          <div *ngIf="registerForm.get('nombre')?.invalid && registerForm.get('nombre')?.touched" class="text-danger">
+            El nombre es obligatorio.
+          </div>
         </div>
 
         <!-- Input Email -->
         <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Email</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" [(ngModel)]="email" name="email" required>
+          <label for="email" class="form-label">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email">
+          <div *ngIf="registerForm.controls['email'].invalid && registerForm.controls['email'].touched" class="text-danger">
+            <div *ngIf="registerForm.controls['email'].hasError('required')">El email es obligatorio.</div>
+            <div *ngIf="registerForm.controls['email'].hasError('email')">Por favor ingrese un email válido.</div>
+          </div>
         </div>
 
         <!-- Input Contraseña -->
         <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password" name="password" required>
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" formControlName="password">
+          <div *ngIf="registerForm.controls['password'].invalid && registerForm.controls['password'].touched" class="text-danger">
+            <div *ngIf="registerForm.controls['password'].hasError('required')">La contraseña es obligatoria.</div>
+            <div *ngIf="registerForm.controls['password'].hasError('minlength')">La contraseña debe tener al menos 8 caracteres.</div>
+          </div>
         </div>
 
         <!-- Enlace y botón -->
         <div class="btn-login d-flex justify-content-between align-items-center mb-4">
-          <a routerLink='/login'>¿ya estás registrado? Inicia Sesion</a>
-          <button type="submit" class="btn btn-primary">Registrarme</button>
+          <a routerLink='/login'  >¿Ya estás registrado? Inicia Sesión</a>
+          <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Registrarme</button>
         </div>
 
         <!-- ReCaptcha y condiciones -->
