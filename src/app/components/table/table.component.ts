@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ModalComponent } from '../modal/modal.component';
 import { PlantaService } from '../../services/planta.service';
 import { CommonModule } from '@angular/common';
@@ -12,7 +11,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [RouterOutlet, ModalComponent,CommonModule,FormsModule],
+  imports: [ModalComponent,CommonModule,FormsModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.css'
 })
