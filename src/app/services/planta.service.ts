@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class PlantaService {
 
-  private baseUrl = 'http://localhost:8080/planta'
+  private baseUrl = 'http://nahuel-raspy.duckdns.org:8888/planta'
 
   constructor(private httpCliente:HttpClient) { }
 
