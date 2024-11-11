@@ -1,13 +1,24 @@
 .card {
     height: 90px;
-    width: 250px;
+    max-width: 250px;
     border-radius: 20px;
+}
+
+.text-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 50px;
+    min-height: 50px;
+    
 }
 
 .card .card-text {
     font-size: 13px;
     color: #9e9ea1;
+    
 }
+
 
  /* cards */
 .card-body {
@@ -65,4 +76,15 @@
 
 .bi-x-lg {
     color: #f2a863 ;
+}
+
+
+
+
+
+
+@media (max-width: 1400px) {
+    .card {
+        transform: scale(0.9); /* Reducir el tamaño de la tarjeta al 90% */
+    }
 }

@@ -58,13 +58,6 @@ export class ModalComponent {
       bandera: this.detallePais[0].flags.png
     };
 
-    Swal.fire({
-      title: '¡Planta creada!',
-      text: `La planta ${nuevaPlanta.nombre} en ${nuevaPlanta.pais} se ha creado correctamente.`,
-      icon: 'success',
-      confirmButtonColor: '#33a3aa',
-      confirmButtonText: 'Aceptar'
-    });
 
     console.log(nuevaPlanta);
     this.plantaEnviada.emit(nuevaPlanta);

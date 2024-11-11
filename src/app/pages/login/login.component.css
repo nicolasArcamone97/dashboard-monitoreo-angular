@@ -142,3 +142,21 @@ form {
     font-size: 13px;
     color: #84818A;
 }
+
+
+
+
+
+
+
+/* media queries */
+@media (max-width: 755px) { 
+
+    .col-text .col-titulo {
+        margin-top: 1em;
+    }
+
+    .col-titulo-form h1 {
+        margin-top: 1em;
+    }
+}

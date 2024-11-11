@@ -1,13 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../enviroment';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
+                  
+  private baseUrl = environment.baseUrl
 
-  private usuariUrl = 'http://nahuel-raspy.duckdns.org:8888/usuario'
   private userKey = 'user';
   
   constructor(private httpCliente:HttpClient) { }
@@ -36,15 +39,15 @@ export class UsuarioService {
   // metodos del backend 
 
   obtenerUsuario(usuarioId:number):Observable<any>{
-    return this.httpCliente.get<any>(`${this.usuariUrl}/${usuarioId}`)
+    return this.httpCliente.get<any>(`${this.baseUrl}usuario/${usuarioId}`)
   }
 
   crearUsuario(usuario:any):Observable<any>{
-    return this.httpCliente.post(this.usuariUrl,usuario)
+    return this.httpCliente.post(`${this.baseUrl}usuario`,usuario)
   }
 
   login(usuario:any):Observable<any>{
-    return this.httpCliente.post(`${this.usuariUrl}/login`,usuario)
+    return this.httpCliente.post(`${this.baseUrl}usuario/login`,usuario)
   }
 
 
