@@ -56,8 +56,16 @@ export class TableComponent implements OnInit{
   agregarPlanta(nuevaPlanta: any) {
     this.plantaService.crearPlanta(nuevaPlanta).subscribe( () => {
       this.obtenerPlantas()
+      Swal.fire({
+        title: '¡Planta creada!',
+        text: `La planta ${nuevaPlanta.nombre} en ${nuevaPlanta.pais} se ha creado correctamente.`,
+        icon: 'success',
+        confirmButtonColor: '#33a3aa',
+        confirmButtonText: 'Aceptar'
+      });
+
     }), (err:HttpErrorResponse) => {
-      console.log("Error al eliminar la planta",err)
+      console.log("Error al agregar planta",err)
     }
   }
 
@@ -68,6 +76,14 @@ export class TableComponent implements OnInit{
   actualizarPlanta(planta:any){
     this.plantaSeleccionada = { ...planta };
     this.plantaService.editarPlanta(this.plantaSeleccionada.id,this.plantaSeleccionada).subscribe( (data) => {
+      Swal.fire({
+        title: '¡Planta Actualizada!',
+        text: `La planta se ha actualizado correctamente.`,
+        icon: 'success',
+        confirmButtonColor: '#33a3aa',
+        confirmButtonText: 'Aceptar'
+      });
+      
       this.obtenerPlantas()
     }), (err:HttpErrorResponse) => {
       console.log("Error al Actualizar la planta",err)
