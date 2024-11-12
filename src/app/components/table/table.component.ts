@@ -76,6 +76,14 @@ export class TableComponent implements OnInit{
   actualizarPlanta(planta:any){
     this.plantaSeleccionada = { ...planta };
     this.plantaService.editarPlanta(this.plantaSeleccionada.id,this.plantaSeleccionada).subscribe( (data) => {
+      Swal.fire({
+        title: '¡Planta Actualizada!',
+        text: `La planta se ha actualizado correctamente.`,
+        icon: 'success',
+        confirmButtonColor: '#33a3aa',
+        confirmButtonText: 'Aceptar'
+      });
+      
       this.obtenerPlantas()
     }), (err:HttpErrorResponse) => {
       console.log("Error al Actualizar la planta",err)

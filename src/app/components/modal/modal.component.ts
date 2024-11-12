@@ -52,6 +52,7 @@ export class ModalComponent {
 
 
   onSubmit() {
+
     const nuevaPlanta = {
       nombre: this.nombreIngresado,
       pais: this.detallePais[0].name.common,

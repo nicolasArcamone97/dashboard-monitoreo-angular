@@ -1,4 +1,4 @@
 export const environment = {
-    production: false,
-    baseUrl: 'http://localhost:8080/'
+
+    baseUrl: 'vps-4521964-x.dattaweb.com:8080/'
   };
