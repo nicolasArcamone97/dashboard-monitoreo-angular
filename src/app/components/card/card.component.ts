@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { PlantaService } from '../../services/planta.service';
+import { Planta } from '../../interfaces/planta.interface';
 
 @Component({
   selector: 'app-card',
@@ -13,7 +14,7 @@ import { PlantaService } from '../../services/planta.service';
 
 export class CardComponent implements OnInit {
 
-  listPlantas: any[] = [];
+  listPlantas?: Planta[]
 
   cardsPlantas: any[] = [
     {titulo: "Lecturas Ok", value: 0, icono: 'bi-check-lg', claseIcono: 'circle'},
@@ -30,11 +31,16 @@ export class CardComponent implements OnInit {
     this.obtenerPlantas(); 
   }
 
-  obtenerPlantas(): void {
-    this.plantaService.obtenerPlantas().subscribe((data) => {
-      this.listPlantas = data;
-      this.cantidadAlertas();
-    });
+  // obtenerPlantas(): void {
+  //   this.plantaService.obtenerPlantas().subscribe((data) => {
+  //     this.listPlantas = data;
+  //     this.cantidadAlertas();
+  //   });
+  // }
+
+  obtenerPlantas(){
+    this.listPlantas = this.plantaService.obtenerPlantas()
+    this.cantidadAlertas()
   }
 
 

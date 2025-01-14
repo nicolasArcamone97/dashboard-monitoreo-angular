@@ -29,17 +29,20 @@ export class TableComponent implements OnInit{
     this.listPlantas
     
   }
-  
+
+  obtenerPlantas(){
+    this.listPlantas = this.plantaService.obtenerPlantas()
+  }
  
   
-  obtenerPlantas(){
-    this.plantaService.obtenerPlantas().subscribe( data => {
-      this.listPlantas = data;
-    }), (err: HttpErrorResponse) => {
-      console.error("Error al obtener plantas", err)
-    }
+  // obtenerPlantas(){
+  //   this.plantaService.obtenerPlantas().subscribe( data => {
+  //     this.listPlantas = data;
+  //   }), (err: HttpErrorResponse) => {
+  //     console.error("Error al obtener plantas", err)
+  //   }
 
-  }
+  // }
   
 
 

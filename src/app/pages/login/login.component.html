@@ -61,7 +61,7 @@
         <!-- Enlace y botón -->
         <div class="btn-login d-flex justify-content-between align-items-center mb-4">
           <a routerLink="/register" href="#">¿No estás registrado?</a>
-          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Iniciar sesión</button>
+          <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid" routerLink="/dashboard">Iniciar sesión</button>
         </div>
 
         <!-- ReCaptcha y condiciones -->
