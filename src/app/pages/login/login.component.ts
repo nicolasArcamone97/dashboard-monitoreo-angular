@@ -28,24 +28,24 @@ export class LoginComponent {
   }
   
 
-  onLogin() {
-    if (this.loginForm.valid) {
-      const usuarioLogin = this.loginForm.value; 
-      this.usuarioService.login(usuarioLogin).subscribe({
-        next: (response) => {
-          console.log('Inicio de sesión exitoso:', response.user.email);
-          if (response.user) {
-            localStorage.setItem('user', JSON.stringify(response.user));
-          }
-          this.router.navigate(['/dashboard']);
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error("Error al Iniciar sesion", err);
-          alert('Por favor ingresa datos validos')
-        }
-      });
-    } else {
-      console.log('Formulario no válido');
-    }
-  }
+  // onLogin() {
+  //   if (this.loginForm.valid) {
+  //     const usuarioLogin = this.loginForm.value; 
+  //     this.usuarioService.login(usuarioLogin).subscribe({
+  //       next: (response) => {
+  //         console.log('Inicio de sesión exitoso:', response.user.email);
+  //         if (response.user) {
+  //           localStorage.setItem('user', JSON.stringify(response.user));
+  //         }
+  //         this.router.navigate(['/dashboard']);
+  //       },
+  //       error: (err: HttpErrorResponse) => {
+  //         console.error("Error al Iniciar sesion", err);
+  //         alert('Por favor ingresa datos validos')
+  //       }
+  //     });
+  //   } else {
+  //     console.log('Formulario no válido');
+  //   }
+  // }
 }
