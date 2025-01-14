@@ -18,9 +18,9 @@ export class SidebarComponent {
 
 
   
-  logout(){
-    this.usuarioService.logout()
-    this.router.navigate(['/register'])
-  }
+  // logout(){
+  //   this.usuarioService.logout()
+  //   this.router.navigate(['/register'])
+  // }
 
 }

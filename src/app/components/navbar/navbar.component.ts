@@ -16,9 +16,9 @@ export class NavbarComponent {
   constructor(private usuarioService:UsuarioService){}
 
   
-  ngOnInit(): void {
-    this.user = this.usuarioService.getUser()
-  }
+  // ngOnInit(): void {
+  //   this.user = this.usuarioService.getUser()
+  // }
 
  
 

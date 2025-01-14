@@ -16,39 +16,39 @@ export class UsuarioService {
   constructor(private httpCliente:HttpClient) { }
 
   // metodos de localStorage para simular login
-  setUser(user: any) {
-    localStorage.setItem(this.userKey, JSON.stringify(user));
-  }
+  // setUser(user: any) {
+  //   localStorage.setItem(this.userKey, JSON.stringify(user));
+  // }
 
-  getUser() {
-    const user = localStorage.getItem(this.userKey);
-    return user ? JSON.parse(user) : null;
-  }
+  // getUser() {
+  //   const user = localStorage.getItem(this.userKey);
+  //   return user ? JSON.parse(user) : null;
+  // }
 
-  isLoggedIn(): boolean {
-    return this.getUser() !== null;
-  }
+  // isLoggedIn(): boolean {
+  //   return this.getUser() !== null;
+  // }
 
-  logout() {
-    localStorage.clear()
-  }
+  // logout() {
+  //   localStorage.clear()
+  // }
 
 
 
 
   // metodos del backend 
 
-  obtenerUsuario(usuarioId:number):Observable<any>{
-    return this.httpCliente.get<any>(`${this.baseUrl}usuario/${usuarioId}`)
-  }
+  // obtenerUsuario(usuarioId:number):Observable<any>{
+  //   return this.httpCliente.get<any>(`${this.baseUrl}usuario/${usuarioId}`)
+  // }
 
-  crearUsuario(usuario:any):Observable<any>{
-    return this.httpCliente.post(`${this.baseUrl}usuario`,usuario)
-  }
+  // crearUsuario(usuario:any):Observable<any>{
+  //   return this.httpCliente.post(`${this.baseUrl}usuario`,usuario)
+  // }
 
-  login(usuario:any):Observable<any>{
-    return this.httpCliente.post(`${this.baseUrl}usuario/login`,usuario)
-  }
+  // login(usuario:any):Observable<any>{
+  //   return this.httpCliente.post(`${this.baseUrl}usuario/login`,usuario)
+  // }
 
 
 

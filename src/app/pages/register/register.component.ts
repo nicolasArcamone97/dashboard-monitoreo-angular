@@ -31,22 +31,22 @@ export class RegisterComponent {
   
 
 
-  onSubmit() {
-    if (this.registerForm.valid) {
-      const user = this.registerForm.value;
+  // onSubmit() {
+  //   if (this.registerForm.valid) {
+  //     const user = this.registerForm.value;
 
-      this.usuarioService.crearUsuario(user).subscribe({
-        next: (response) => {
-          console.log('Usuario registrado:', response);
-          this.router.navigate(['/login']);
-        },
-        error: (err: HttpErrorResponse) => {
-          console.error("Error al crear usuario", err);
-          alert('Por favor ingresa datos validos')
-        }
-      });
-    } else {
-      console.log('Formulario no válido');
-    }
-  }
+  //     this.usuarioService.crearUsuario(user).subscribe({
+  //       next: (response) => {
+  //         console.log('Usuario registrado:', response);
+  //         this.router.navigate(['/login']);
+  //       },
+  //       error: (err: HttpErrorResponse) => {
+  //         console.error("Error al crear usuario", err);
+  //         alert('Por favor ingresa datos validos')
+  //       }
+  //     });
+  //   } else {
+  //     console.log('Formulario no válido');
+  //   }
+  // }
 }
