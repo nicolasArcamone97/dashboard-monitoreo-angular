@@ -5,7 +5,7 @@ import { RegisterComponent } from './pages/register/register.component';
 import { authGuard } from './auth.guard';
 
 export const routes: Routes = [
-    {path: 'dashboard', component:DashboardComponent, pathMatch:'full', canActivate:[authGuard]},
+    {path: 'dashboard', component:DashboardComponent, pathMatch:'full'},
     {path:'login', component:LoginComponent, pathMatch:'full'},
     {path:'register', component:RegisterComponent, pathMatch:'full'},
     { path: '', redirectTo: '/login', pathMatch: 'full' }
